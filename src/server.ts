@@ -87,7 +87,7 @@ const main = async () => {
       },
     }),
   )
-  app.get('/', function (req, res) {
+  app.get('/rest', function (req, res) {
     if (req.session.views) {
       req.session.views++
     } else {
@@ -97,10 +97,10 @@ const main = async () => {
   })
 
   await apolloServer.start()
-  apolloServer.applyMiddleware({ app, cors: false, path: '/graphql' })
+  apolloServer.applyMiddleware({ app, cors: false, path: '/' })
 
   app.listen(4000, () => {
-    console.log('server started on 🚀 http://localhost:4000/graphql🍇')
+    console.log('server started on 🚀 http://localhost:4000🍇')
   })
 }
 
