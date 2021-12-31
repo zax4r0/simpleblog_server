@@ -11,6 +11,7 @@ import { schema } from './schema'
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core'
 import { PrismaClient } from '@prisma/client'
 
+const port = process.env.PORT || 3333
 const prisma = new PrismaClient()
 const main = async () => {
   const apolloServer = new ApolloServer({
@@ -100,7 +101,7 @@ const main = async () => {
   apolloServer.applyMiddleware({ app, cors: false, path: '/' })
 
   app.listen(4000, () => {
-    console.log('server started on 🚀 http://localhost:4000🍇')
+    console.log(`Example app listening at http://localhost:${port}`)
   })
 }
 
