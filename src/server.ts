@@ -61,7 +61,7 @@ const main = async () => {
   app.use(
     cors({
       credentials: true,
-      origin: ['https://simpleblog-rosy.vercel.app', 'http://localhost:3000'],
+      origin: ['simpleblog-rosy.vercel.app', 'localhost:3000'],
       methods: ['GET', 'PUT', 'POST', 'OPTIONS'],
     }),
   )
