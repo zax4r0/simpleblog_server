@@ -61,11 +61,7 @@ const main = async () => {
   app.use(
     cors({
       credentials: true,
-      origin: [
-        'http://localhost:3000',
-        'https://studio.apollographql.com',
-        'https://simpleblog-rosy.vercel.app',
-      ],
+      origin: ['https://simpleblog-rosy.vercel.app', 'http://localhost:3000'],
       methods: ['GET', 'PUT', 'POST', 'OPTIONS'],
     }),
   )
@@ -88,7 +84,7 @@ const main = async () => {
       },
     }),
   )
-  app.get('/rest', function (req, res) {
+  app.get('/', function (req, res) {
     if (req.session.views) {
       req.session.views++
     } else {
@@ -98,9 +94,9 @@ const main = async () => {
   })
 
   await apolloServer.start()
-  apolloServer.applyMiddleware({ app, cors: false, path: '/' })
+  apolloServer.applyMiddleware({ app, cors: false, path: '/gql' })
 
-  app.listen(4000, () => {
+  app.listen({ port }, () => {
     console.log(`Example app listening at http://localhost:${port}`)
   })
 }
